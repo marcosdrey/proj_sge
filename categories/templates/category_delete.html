@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SGE - Deletar {{object.name}}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h3 class="display-5">Deletar Categoria</h3>
+
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Tem certeza de que deseja excluir a categoria <strong>{{ object.name }}</strong>?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger mt-3">Sim, deletar</button>
+                </form>
+
+                
+            </div>
+        </div>
+
+        <a href="{% url 'category_detail' object.id %}" class="btn btn-secondary mt-3">Não, voltar para tela de detalhes</a>
+    </div>
+{% endblock %}
