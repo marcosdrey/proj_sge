@@ -9,9 +9,12 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     'products',
     'inflows',
     'outflows',
+    'ai',
 ]
 
 LOGIN_URL = 'login'
@@ -153,3 +157,6 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+GEMINI_MODEL = os.getenv('GEMINI_MODEL')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
